@@ -15,6 +15,7 @@ public with sharing class AtFutureRecipes {
      * circumstances.
      */
     @testVisible
+    // Initial value for testCircuitBreaker flag used in test assertions
     private static Boolean testCircuitBreaker = false;
     /**
      * @description Method demonstrates the `@future` annotation without the
@@ -29,6 +30,7 @@ public with sharing class AtFutureRecipes {
         // this runs in the future!in a separate Apex transaction from the
         // calling code
         System.debug(LoggingLevel.INFO, '\n\nOur Data is: \n' + data);
+        // Setting testCircuitBreaker to true to indicate future method execution
         AtFutureRecipes.testCircuitBreaker = true;
     }
 
@@ -52,7 +54,9 @@ public with sharing class AtFutureRecipes {
         //      RestClient.GET, '/');
         Http h = new Http();
         HttpRequest request = new HttpRequest();
+        // Hardcoded URL scheme prefix used to construct the full endpoint URL
         request.setEndpoint('https://' + url);
+        // HTTP method for the request
         request.setMethod('GET');
 
         HttpResponse response = h.send(request);
@@ -64,6 +68,7 @@ public with sharing class AtFutureRecipes {
          * callout fails
          */
 
+        // HTTP status code 200 indicates a successful response
         if (response.getStatusCode() != 200) {
             AtFutureRecipes.testCircuitBreaker = true;
         }
