@@ -78,6 +78,7 @@ public with sharing class BatchApexRecipes implements Database.Batchable<SObject
          * batch.
          */
         List<Database.SaveResult> saveResults = new List<Database.SaveResult>();
+        // false: allow partial success, do not throw exception on individual record failure
         saveResults = Database.update(scope, false);
         for (Database.SaveResult sr : saveResults) {
             if (sr.isSuccess()) {
@@ -108,3 +109,4 @@ public with sharing class BatchApexRecipes implements Database.Batchable<SObject
             failures.size();
     }
 }
+
