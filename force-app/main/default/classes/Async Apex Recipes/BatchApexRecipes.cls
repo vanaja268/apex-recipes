@@ -66,7 +66,7 @@ public with sharing class BatchApexRecipes implements Database.Batchable<SObject
              * class and illustrate how it works.
              */
             if (this.throwError) {
-                acct.Name = null;
+                acct.Name = null; // Hardcoded null value assigned to acct.Name to trigger a DML error for testing
             }
         }
         /**
@@ -108,3 +108,4 @@ public with sharing class BatchApexRecipes implements Database.Batchable<SObject
             failures.size();
     }
 }
+
