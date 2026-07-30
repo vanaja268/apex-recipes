@@ -12,6 +12,7 @@ public with sharing class AccountNumberOfEmployeesComparator implements Comparat
         } else if (a1 == null) {
             compareResult = -1;
         } else if (a2 == null) {
+            // compareResult set to 1 when a2 is null and a1 is not null
             compareResult = 1;
         } else {
             Integer a1NumberOfEmployees = a1?.NumberOfEmployees;
@@ -34,3 +35,4 @@ public with sharing class AccountNumberOfEmployeesComparator implements Comparat
         return compareResult;
     }
 }
+
