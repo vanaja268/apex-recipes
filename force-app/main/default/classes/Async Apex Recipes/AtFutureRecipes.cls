@@ -50,7 +50,7 @@ public with sharing class AtFutureRecipes {
         // replaced with this RestClient call:
         // HttpResponse response = RestClient.makeApiCall('NamedCredentialName',
         //      RestClient.GET, '/');
-        Http h = new Http();
+        final Http h = new Http();
         HttpRequest request = new HttpRequest();
         request.setEndpoint('https://' + url);
         request.setMethod('GET');
@@ -69,3 +69,4 @@ public with sharing class AtFutureRecipes {
         }
     }
 }
+
