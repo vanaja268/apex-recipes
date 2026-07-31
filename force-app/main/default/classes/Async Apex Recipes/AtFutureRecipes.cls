@@ -50,12 +50,12 @@ public with sharing class AtFutureRecipes {
         // replaced with this RestClient call:
         // HttpResponse response = RestClient.makeApiCall('NamedCredentialName',
         //      RestClient.GET, '/');
-        Http h = new Http();
+        Http httpClient = new Http();
         HttpRequest request = new HttpRequest();
         request.setEndpoint('https://' + url);
         request.setMethod('GET');
 
-        HttpResponse response = h.send(request);
+        HttpResponse response = httpClient.send(request);
         /**
          * This is the point in which you would interact with the response you
          * receive because this recipe is intended only to demonstrate making a
@@ -69,3 +69,4 @@ public with sharing class AtFutureRecipes {
         }
     }
 }
+
